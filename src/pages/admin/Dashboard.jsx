@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useReducer } from 'react';
 import Message from '../../components/Message';
 import { messageReducer, MessageContext, initState } from '../../store/messageStore';
-import { API_BASE_URL} from "../config/api";
+import { API_BASE_URL} from "../../config/api";
 
 function Dashboard() {
     const logouted = useNavigate();

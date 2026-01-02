@@ -4,7 +4,7 @@ import OrderMoadl from "../../components/OrderModal";
 import DeleModal from "../../components/DeleModal";
 import Pagenation from "../../components/Pagenation";
 import { Modal } from "bootstrap";
-import { API_BASE_URL, API_PATH } from "../config/api";
+import { API_BASE_URL, API_PATH } from "../../config/api";
 
 function AdminOrder() {
   const [order, setOrder] = useState([]);
