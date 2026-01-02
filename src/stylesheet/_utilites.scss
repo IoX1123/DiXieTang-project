@@ -1,0 +1,33 @@
+.object-cover{
+    object-fit: cover;
+}
+
+.disable-link{
+     pointer-events: none;
+     background-color: #6c6868;
+     border-radius: #6c6868;
+}
+
+.swiper-container{
+    width: 100%;
+  height: 100vh;
+}
+
+.card-img-fixed {
+  width: 100%;
+  height: 400px;      
+  object-fit: cover;  
+}
+
+.product-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+
+.product-detail {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
