@@ -4,6 +4,7 @@ import ProductsModal from "../../components/ProductsModal";
 import DeleModal from "../../components/DeleModal";
 import Pagenation from "../../components/Pagenation";
 import { Modal } from "bootstrap";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 
 function AdminProducts() {
@@ -26,7 +27,7 @@ function AdminProducts() {
     }, [])
 
     const getProduct = async(page = 1) =>{
-      const product = await axios.get(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/products?page=${page}`);
+      const product = await axios.get(`${API_BASE_URL}v2/api/${API_PATH}/admin/products?page=${page}`);
              
              setProducts(product.data.products);
              setPagnation(product.data.pagination);
@@ -52,7 +53,7 @@ function AdminProducts() {
 
     const delePD = async(id) => {
       try {
-        const res = await axios.delete(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/product/${id}`)
+        const res = await axios.delete(`${API_BASE_URL}v2/api/${API_PATH}/admin/product/${id}`)
         if(res.data.success){
           getProduct();
           closeDelPDModal();

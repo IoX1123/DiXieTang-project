@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 
 function ProductDetail() {
@@ -12,7 +13,7 @@ function ProductDetail() {
     const navigate = useNavigate();
 
     const getProduct = async(id) =>{
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/product/${id}`);
+      const res = await axios.get(`${API_BASE_URL}v2/api/${API_PATH}/product/${id}`);
              setProduct(res.data.product);
            
     }
@@ -32,7 +33,7 @@ function ProductDetail() {
         setIsLoading(true);
         try {
             const res = await axios.post(
-                `${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/cart`, 
+                `${API_BASE_URL}v2/api/${API_PATH}/cart`, 
                 data
             )
             setIsLoading(false);

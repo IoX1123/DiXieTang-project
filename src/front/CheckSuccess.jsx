@@ -1,13 +1,14 @@
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 function CheckSuccess() {
     const {orderID} = useParams();
     const [orderData, setOrderData] = useState({});
     const getCart = async(orderID) => {
         const res = await axios.get(
-                `${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/order/${orderID}`,
+                `${API_BASE_URL}v2/api/${API_PATH}/order/${orderID}`,
                 
         );
         

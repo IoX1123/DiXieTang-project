@@ -4,7 +4,7 @@ import OrderMoadl from "../../components/OrderModal";
 import DeleModal from "../../components/DeleModal";
 import Pagenation from "../../components/Pagenation";
 import { Modal } from "bootstrap";
-
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 function AdminOrder() {
   const [order, setOrder] = useState([]);
@@ -26,7 +26,7 @@ function AdminOrder() {
     }, [])
 
     const getOrder = async(page = 1) =>{
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/orders?page=${page}`);
+      const res = await axios.get(`${API_BASE_URL}v2/api/${API_PATH}/admin/orders?page=${page}`);
       
              setOrder(res.data.orders);
              setPagnation(res.data.pagination);
@@ -52,7 +52,7 @@ function AdminOrder() {
 
     const delePD = async(id) => {
       try {
-        const res = await axios.delete(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/product/${id}`)
+        const res = await axios.delete(`${API_BASE_URL}v2/api/${API_PATH}/admin/product/${id}`)
         if(res.data.success){
           getOrder();
           closeDelPDModal();

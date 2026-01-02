@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 function Cart() {
     const {cartData, getCartData} = useOutletContext();
@@ -10,7 +11,7 @@ function Cart() {
     
     const removeCartItem = async(id) => {
         try {
-            const res = await axios.delete(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/cart/${id}`)
+            const res = await axios.delete(`${API_BASE_URL}v2/api/${API_PATH}/cart/${id}`)
                 getCartData()
         } catch (error) {
             console.log(error)
@@ -28,7 +29,7 @@ function Cart() {
         
         setloadingItem([...loadingItems, item.id]);
         try {
-            const res = await axios.put(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/cart/${item.id}`, data)
+            const res = await axios.put(`${API_BASE_URL}v2/api/${API_PATH}/cart/${item.id}`, data)
                 getCartData()
                 setloadingItem(loadingItems.filter((i) => i !== item.id))
         } catch (error) {
@@ -42,7 +43,7 @@ function Cart() {
             }
         }
         try {
-            const res = await axios.post(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/coupon`, cpdata)
+            const res = await axios.post(`${API_BASE_URL}v2/api/${API_PATH}/coupon`, cpdata)
                 getCartData()
                 setloadingItem(loadingItems.filter((i) => i !== item.id))
         } catch (error) {

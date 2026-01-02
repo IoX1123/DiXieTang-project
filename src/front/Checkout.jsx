@@ -2,6 +2,7 @@ import { Link, useOutletContext, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Input } from '../components/FormElement';
 import axios from 'axios';
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 function Checkout() {
   const { cartData } = useOutletContext();
@@ -28,7 +29,7 @@ function Checkout() {
       },
     };
     const res = await axios.post(
-      `${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/order`,
+      `${API_BASE_URL}v2/api/${API_PATH}/order`,
       form,
     );
     

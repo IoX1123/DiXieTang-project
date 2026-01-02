@@ -11,6 +11,7 @@ import ProductDetail from "./front/ProductDetail";
 import Cart from "./front/Cart";
 import Checkout from "./front/Checkout";
 import CheckSuccess from "./front/CheckSuccess";
+import { API_BASE_URL, API_PATH} from "./config/api"
 
 
 function App() {
@@ -26,15 +27,16 @@ function App() {
           <Route path="checkout" element={<Checkout/> }></Route>
           <Route path="success/:orderID" element={<CheckSuccess/> }></Route>
         </Route>
-        <Route path="/login" element={<Login/> }></Route>
+        {/* <Route path="/login" element={<Login/> }></Route>
         <Route path="/admin" element={<Dashboard/> }>
             <Route path="product" element={<AdminProducts/> }></Route>
             <Route path="coupon" element={<AdminCoupon/> }></Route>
             <Route path="order" element={<AdminOrder/> }></Route>
-        </Route>
+        </Route> */}
      </Routes>
     </>
   )
 }
+
 
 export default App

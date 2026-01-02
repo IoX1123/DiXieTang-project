@@ -4,6 +4,7 @@ import CouponModal from "../../components/CouponModal";
 import DeleModal from "../../components/DeleModal";
 import Pagenation from "../../components/Pagenation";
 import { Modal } from "bootstrap";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 
 function AdminCoupon() {
@@ -26,7 +27,7 @@ function AdminCoupon() {
     }, [])
 
     const getCoupon = async(page = 1) =>{
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/coupons?page=${page}`);
+      const res = await axios.get(`${API_BASE_URL}v2/api/${API_PATH}/admin/coupons?page=${page}`);
              
              setCoupon(res.data.coupons);
              setPagnation(res.data.pagination);
@@ -52,7 +53,7 @@ function AdminCoupon() {
 
     const deleCP = async(id) => {
       try {
-        const res = await axios.delete(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/coupon/${id}`)
+        const res = await axios.delete(`${API_BASE_URL}v2/api/${API_PATH}/admin/coupon/${id}`)
         if(res.data.success){
           getCoupon();
           closeDelModal();

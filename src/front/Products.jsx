@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import axios from "axios";
 import Pagenation from "../components/Pagenation";
 import { Link } from "react-router-dom";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 
 function Products() {
@@ -16,17 +17,17 @@ function Products() {
 
 
     const getProduct = async(page = 1) =>{
-      const product = await axios.get(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/products?page=${page}`);
+      const product = await axios.get(`${API_BASE_URL}v2/api/${API_PATH}/products?page=${page}`);
              setProducts(product.data.products);
              setPagnation(product.data.pagination);
     }
     const getAllProduct = async() =>{
-      const allproduct = await axios.get(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/products/all`);
+      const allproduct = await axios.get(`${API_BASE_URL}v2/api/${API_PATH}/products/all`);
              setAllProducts(allproduct.data.products);
     }
 
     const getCategoryProduct = async(category) =>{
-      const categoryproduct = await axios.get(`${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/products?category=${category}`);
+      const categoryproduct = await axios.get(`${API_BASE_URL}v2/api/${API_PATH}/products?category=${category}`);
             setProducts(categoryproduct.data.products);
             setPagnation(categoryproduct.data.pagination);
             setActiveCategory(category);

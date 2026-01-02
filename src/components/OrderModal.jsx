@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 function OrderModal ({closeNewCPModal, getCoupon, type, tmpCPata}) {
     const [tmpData, setTmpData] = useState({
@@ -49,10 +50,10 @@ function OrderModal ({closeNewCPModal, getCoupon, type, tmpCPata}) {
     }
     const submit = async() => {
         try {
-            let api = `${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/coupon`;
+            let api = `${API_BASE_URL}v2/api/${API_PATH}/admin/coupon`;
             let method = 'post';
             if(type === 'edit') {
-                api = `${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/coupon/${tmpCPata.id}`;
+                api = `${API_BASE_URL}v2/api/${API_PATH}/admin/coupon/${tmpCPata.id}`;
                 method = 'put';
             }
             const res = await axios[method](api, {

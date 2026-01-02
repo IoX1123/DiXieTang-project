@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../config/api";
 
 
 
@@ -22,7 +23,7 @@ function Login() {
             setLoginState({"message": "請輸入帳號或密碼"});
         } else {
             try {
-                const res = await axios.post(`${import.meta.env.VITE_API_URL}v2/admin/signin`, data);
+                const res = await axios.post(`${API_BASE_URL}v2/admin/signin`, data);
                 const {token, expired} = res.data;
                 document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
                 if(res.data.success) {

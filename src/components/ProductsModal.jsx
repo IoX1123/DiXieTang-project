@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { MessageContext, ToastMessage, ToastFailMessage } from "../store/messageStore";
+import { API_BASE_URL, API_PATH } from "../config/api";
 
 function ProductsModal ({closeNewPDModal, getProduct, type, tmpPData}) {
     const [tmpData, setTmpData] = useState({
@@ -59,10 +60,10 @@ function ProductsModal ({closeNewPDModal, getProduct, type, tmpPData}) {
     }
     const submit = async() => {
         try {
-            let api = `${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/product`;
+            let api = `${API_BASE_URL}v2/api/${API_PATH}/admin/product`;
             let method = 'post';
             if(type === 'edit') {
-                api = `${import.meta.env.VITE_API_URL}v2/api/${import.meta.env.VITE_API_PATH}/admin/product/${tmpPData.id}`;
+                api = `${API_BASE_URL}v2/api/${API_PATH}/admin/product/${tmpPData.id}`;
                 method = 'put';
             }
             const res = await axios[method](api, {

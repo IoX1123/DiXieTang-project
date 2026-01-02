@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useReducer } from 'react';
 import Message from '../../components/Message';
 import { messageReducer, MessageContext, initState } from '../../store/messageStore';
+import { API_BASE_URL} from "../config/api";
 
 function Dashboard() {
     const logouted = useNavigate();
@@ -25,7 +26,7 @@ function Dashboard() {
       }
       (async()=>{
         try {
-          const res = await axios.post(`${import.meta.env.VITE_API_URL}v2/api/user/check`);
+          const res = await axios.post(`${API_BASE_URL}v2/api/user/check`);
         } catch (error) {
           if(!error.response.data.success) logouted('/login');
         }
